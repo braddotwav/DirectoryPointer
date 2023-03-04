@@ -1,0 +1,9 @@
+using UnityEditor;
+
+/// <summary>
+//  Changes to this file may cause incorrect behavior
+/// </summary>
+
+internal class GeneratedDirectoryClass
+{
+}
