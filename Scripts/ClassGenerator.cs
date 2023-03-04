@@ -9,7 +9,8 @@ namespace NightshiftGames.DirectoryPointer
     internal static class ClassGenerator
     {
         private static readonly string FileName = "GeneratedDirectoryClass.cs";
-        private static readonly string FilePath = $"Assets/Thirdparty/Nightshift Games/DirectoryPointer/Resources/Nightshift Games/Generated/{FileName}";
+        private static readonly string FilePath = "Assets/Thirdparty/Nightshift Games/DirectoryPointer/Resources/Nightshift Games/Generated";
+        private static readonly string FullFilePath = $"{FilePath}/{FileName}";
 
         public static void CheckAndCreateClass(Settings data)
         {
@@ -30,15 +31,23 @@ namespace NightshiftGames.DirectoryPointer
             
             template.InsertRange(8, array);
 
-            File.WriteAllLines(FilePath, template);
+            if (Directory.Exists(FilePath))
+            {
+                File.WriteAllLines(FullFilePath, template);
+            }
+            else
+            {
+                Directory.CreateDirectory(FilePath);
+                File.WriteAllLines(FullFilePath, template);
+            }
 
             AssetDatabase.Refresh();
         }
 
         public static void DeleteClassFile()
         {
-            if (!File.Exists(FilePath)) { Debug.LogWarning("Could not find a generated class file to delete"); return; }
-            AssetDatabase.DeleteAsset($"Assets/Thirdparty/Nightshift Games/DirectoryPointer/Resources/Nightshift Games/Generated/{FileName}");
+            if (!File.Exists(FullFilePath)) { Debug.LogWarning("Could not find a generated class file to delete"); return; }
+            AssetDatabase.DeleteAsset(FullFilePath);
             AssetDatabase.Refresh();
         }
 
