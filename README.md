@@ -3,7 +3,7 @@ A unity editor tool that allows you to set up directorys as menu items for quick
 <center><img src="Resources/Nightshift Games/DirectoryPointer/directorypointerheader.png"></center>
 
 ## How to import
-- Download the latest package [release here]()
+- Download the latest package [release here](https://github.com/RealJamako/NSG_DirectoryPointer/releases/tag/v1.0)
 - Inside your project navigate to the header menu under **Assets**, **Import Package**, **Custom Package**.
 - Locate the DirectoryPointer package and import.
 
